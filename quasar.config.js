@@ -82,6 +82,26 @@ module.exports = configure(function (/* ctx */) {
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
       // ]
+      extendWebpack (cfg) {
+        cfg.plugins.push(new ESLintPlugin({
+          files: './src',
+          extensions: ['js', 'vue']
+        }))
+      },
+
+      chainWebpack (chain) {
+        chain.resolve.alias.merge({
+          ui: path.resolve(__dirname, '../ui/src/index.js'),
+          '@quasar/quasar-ui-qmarkdown/src/index.sass': path.resolve(__dirname, '../ui/src/index.sass'),
+          '@quasar/quasar-ui-qmarkdown': path.resolve(__dirname, '../ui/src'),
+          examples: path.resolve(__dirname, './src/examples')
+        })
+
+        chain.module.rule('md')
+          .test(/\.md$/i)
+          .use('raw-loader')
+          .loader('raw-loader')
+      }
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
