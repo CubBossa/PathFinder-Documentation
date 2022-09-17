@@ -71,7 +71,7 @@ const props = defineProps<{
 }>()
 
 const effects: Ref = ref(undefined);
-import('../assets/markdown/' + props.activePage.markdown_path).then(value => {
+import('assets/markdown/' + props.activePage.markdown_path).then(value => {
   console.log(value)
   effects.value = value.default
 })
