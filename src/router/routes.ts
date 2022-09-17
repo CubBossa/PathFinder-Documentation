@@ -2,7 +2,7 @@ import {RouteRecordRaw} from 'vue-router';
 import component from "*.vue";
 import {Page} from "src/models";
 
-const effects: Page = {markdown_path: 'effects.md', label: 'page', subpages: []}
+const effects: Page = {markdown_path: 'effects', label: 'page', subpages: []}
 const routes: RouteRecordRaw[] = [
   {
     path: '/',

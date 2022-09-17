@@ -48,7 +48,7 @@
     </q-drawer>
 
     <q-page-container>
-      <div class="q-pa-lg row justify-center">
+      <div class="q-pa-lg row justify-center" style="background-color: #e0e0e0">
         <q-card class="" style="max-width: 800px">
           <q-spinner v-if="effects === undefined" color="primary" size="3em"/>
           <q-markdown v-if="effects !== undefined" :src="effects" class="q-pa-xl col self-center"/>
@@ -71,8 +71,7 @@ const props = defineProps<{
 }>()
 
 const effects: Ref = ref(undefined);
-import('../markdown/' + props.activePage.markdown_path).then(value => {
-  console.log(value)
+import('../markdown/' + props.activePage.markdown_path  + '.md').then(value => {
   effects.value = value.default
 })
 
