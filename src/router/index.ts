@@ -32,5 +32,9 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
 
+  Router.afterEach((to, from) => {
+    {{ Router.currentRoute.value.params.version }}
+  })
+
   return Router;
 });

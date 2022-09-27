@@ -1,11 +1,15 @@
 export interface Project {
-  label: string
-  currentVersion: string
-  versions: string[]
+  name: string
+  versions: Version[]
+}
+
+export interface Version {
+  version: string
+  pages: Page[]
 }
 
 export interface Page {
-  markdown_path: string
-  label: string
+  name: string
+  markdown?: string
   subpages: Page[]
 }

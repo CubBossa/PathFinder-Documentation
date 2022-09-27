@@ -4,10 +4,10 @@
       <q-toolbar inset>
 
         <q-toolbar-title>
-          {{ title }}
-          <q-badge color="red" rounded :label="'v' + project.currentVersion"/>
+          {{ currentProject?.name }}
+          <q-badge color="red" rounded :label="'v' + currentVersion?.version"/>
         </q-toolbar-title>
-        <q-btn :icon="ionLogoGithub" />
+        <q-btn :icon="ionLogoGithub"/>
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -27,19 +27,22 @@
         </template>
       </q-input>
 
-      <q-list>
-        <q-item-label header>
-          Projects
-        </q-item-label>
+      <q-item header>
+        Projects
+      </q-item>
+      <q-list v-for="project in projects" :key="project.name">
+        <q-item>
+          <q-btn>
+            {{ project.name }}
+          </q-btn>
+        </q-item>
       </q-list>
 
+      <q-item header>
+        Navigation
+      </q-item>
       <q-list>
-
-        <q-item-label header>
-          Navigation
-        </q-item-label>
-
-        <q-tree default-expand-all :nodes="pages" :node-key="title"/>
+        <!-- <q-tree default-expand-all :nodes="currentVersion?.pages" :node-key="markdown_path"/>-->
       </q-list>
     </q-drawer>
 
@@ -48,32 +51,17 @@
     </q-drawer>
 
     <q-page-container>
-      <div class="q-pa-lg row justify-center" style="background-color: #e0e0e0">
-        <q-card class="" style="max-width: 800px">
-          <q-spinner v-if="effects === undefined" color="primary" size="3em"/>
-          <q-markdown v-if="effects !== undefined" :src="effects" class="q-pa-xl col self-center"/>
-        </q-card>
-      </div>
+      <router-view/>
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup lang="ts">
-import { ionLogoGithub } from '@quasar/extras/ionicons-v6'
-import {Page, Project} from "src/models";
-import {ref, Ref} from "vue";
+import {ionLogoGithub} from '@quasar/extras/ionicons-v6'
+import {useProjects} from "stores/project-store";
+import {storeToRefs} from "pinia";
 
-const props = defineProps<{
-  project: Project,
-  title: string
-  pages: Page[],
-  activePage: Page
-}>()
-
-const effects: Ref = ref(undefined);
-import('../markdown/' + props.activePage.markdown_path  + '.md').then(value => {
-  effects.value = value.default
-})
+const {projects, currentProject, currentVersion} = storeToRefs(useProjects())
 
 </script>
 
