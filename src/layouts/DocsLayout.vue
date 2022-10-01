@@ -2,13 +2,12 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar inset>
-
         <q-toolbar-title>
-          {{ currentProject?.name }}
-          <q-badge color="red" rounded :label="'v' + currentVersion?.version"/>
+          {{ projects.currentProject?.name }}
+          <q-chip dense :label="'v' + projects.currentVersion?.version"/>
         </q-toolbar-title>
-        <q-btn :icon="ionLogoGithub"/>
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn :icon="Dark.isActive ? 'dark_mode' : 'light_mode'" @click="Dark.toggle()" round flat :ripple="false"/>
+        <q-btn :icon="ionLogoGithub" round flat :ripple="false"/>
       </q-toolbar>
     </q-header>
 
@@ -27,10 +26,10 @@
         </template>
       </q-input>
 
-      <q-item header>
+      <q-item>
         Projects
       </q-item>
-      <q-list v-for="project in projects" :key="project.name">
+      <q-list v-for="project in projects.projects" :key="project.name">
         <q-item>
           <q-btn>
             {{ project.name }}
@@ -38,12 +37,26 @@
         </q-item>
       </q-list>
 
-      <q-item header>
+      <q-separator/>
+      <q-item>
         Navigation
       </q-item>
-      <q-list>
-        <!-- <q-tree default-expand-all :nodes="currentVersion?.pages" :node-key="markdown_path"/>-->
-      </q-list>
+      <q-item>
+        <q-tree
+          no-connectors
+          default-expand-all
+          :nodes="projects.currentVersion?.pages.pages"
+          node-key="name"
+          selected-color="red"
+          :selected="selected"
+          @update:selected="s => navigate(s)"
+        >
+          <template v-slot:default-header="props">
+            <span v-if="props.node.markdown === undefined" class="text-weight-bold">{{ props.node.label }}</span>
+            <span v-else>{{ props.node.label }}</span>
+          </template>
+        </q-tree>
+      </q-item>
     </q-drawer>
 
     <q-drawer side="right" show-if-above bordered>
@@ -59,9 +72,20 @@
 <script setup lang="ts">
 import {ionLogoGithub} from '@quasar/extras/ionicons-v6'
 import {useProjects} from "stores/project-store";
-import {storeToRefs} from "pinia";
+import {ref} from "vue";
+import {useRouter} from "vue-router";
+import {Dark} from "quasar";
 
-const {projects, currentProject, currentVersion} = storeToRefs(useProjects())
+const router = useRouter()
+const projects = useProjects()
+const text = ref('')
+const selected = ref('')
+
+function navigate(page: string | null) {
+  projects.navigate(router, page)?.then(value => {
+    selected.value = (value || projects.getFallBack()).name
+  })
+}
 
 </script>
 

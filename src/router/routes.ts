@@ -2,10 +2,9 @@ import {RouteRecordRaw} from 'vue-router';
 import component from "*.vue";
 import {Page} from "src/models";
 
-const effects: Page = {markdown: 'effects', name: 'effects', subpages: []}
 const routes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path: '/:project/:version/:page',
     component: () => import('layouts/DocsLayout.vue'),
     children: [{path: '', component: () => import('pages/MarkDownPage.vue')}],
   },

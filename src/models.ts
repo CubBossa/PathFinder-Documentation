@@ -1,4 +1,5 @@
 export interface Project {
+  key: string
   name: string
   versions: Version[]
 }
@@ -10,6 +11,7 @@ export interface Version {
 
 export interface Page {
   name: string
+  label: string
   markdown?: string
-  subpages: Page[]
+  children: Page[]
 }
