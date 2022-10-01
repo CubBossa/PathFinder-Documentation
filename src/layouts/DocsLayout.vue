@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar inset>
+      <q-toolbar inset style="height: 70px">
         <q-toolbar-title>
           {{ projects.currentProject?.name }}
           <q-chip dense :label="'v' + projects.currentVersion?.version"/>
@@ -15,30 +15,32 @@
       show-if-above
       bordered
     >
-      <q-input model-value="" style="background-color: #1976D2" class="shadow-4" borderless>
-        <template v-slot:append>
-          <q-icon v-if="text !== ''" name="close" @click="text = ''" class="cursor-pointer"/>
-          <q-icon name="search"/>
-        </template>
+      <q-item id="search_input" style="height: 70px" class="row">
+        <q-input model-value="" class="col self-stretch q-py-sm" borderless square filled dense>
+          <template v-slot:append>
+            <q-icon v-if="text !== ''" name="close" @click="text = ''" class="cursor-pointer"/>
+            <q-icon name="search"/>
+          </template>
 
-        <template v-slot:hint>
-          Field hint
-        </template>
-      </q-input>
+          <template v-slot:hint>
+            Field hint
+          </template>
+        </q-input>
+      </q-item>
 
       <q-item>
         Projects
       </q-item>
       <q-list v-for="project in projects.projects" :key="project.name">
         <q-item>
-          <q-btn>
+          <q-btn unelevated>
             {{ project.name }}
           </q-btn>
         </q-item>
       </q-list>
 
       <q-separator/>
-      <q-item>
+      <q-item class="text-center text-weight-bold">
         Navigation
       </q-item>
       <q-item>
@@ -57,10 +59,6 @@
           </template>
         </q-tree>
       </q-item>
-    </q-drawer>
-
-    <q-drawer side="right" show-if-above bordered>
-      Just some content here
     </q-drawer>
 
     <q-page-container>
@@ -89,8 +87,11 @@ function navigate(page: string | null) {
 
 </script>
 
-<style>
-p {
-  line-height: 170%;
-}
+<style lang="sass">
+p
+  line-height: 170%
+
+#search_input
+  background-color: $primary
+
 </style>
