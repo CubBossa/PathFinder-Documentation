@@ -1,6 +1,6 @@
-import {defineStore} from "pinia";
-import {Page, Project, Version} from "src/models";
-import {Router, useRouter} from "vue-router";
+import {defineStore} from 'pinia';
+import {Page, Project, Version} from 'src/models';
+import {Router} from 'vue-router';
 
 export const useProjects = defineStore('projects', {
   state: () => ({

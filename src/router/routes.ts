@@ -1,6 +1,4 @@
 import {RouteRecordRaw} from 'vue-router';
-import component from "*.vue";
-import {Page} from "src/models";
 
 const routes: RouteRecordRaw[] = [
   {

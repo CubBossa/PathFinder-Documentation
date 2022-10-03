@@ -37,10 +37,9 @@
 
 <script setup lang="ts">
 
-import {ref, Ref, watch} from "vue";
-import {useProjects} from "stores/project-store";
-import {useRoute} from "vue-router";
-import {Dark} from "quasar";
+import {ref, Ref, watch} from 'vue';
+import {useProjects} from 'stores/project-store';
+import {useRoute} from 'vue-router';
 
 const projects = useProjects()
 
