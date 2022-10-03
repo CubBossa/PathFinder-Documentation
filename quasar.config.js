@@ -77,10 +77,15 @@ module.exports = configure(function (/* ctx */) {
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
-
+      viteVuePluginOptions: {
+        template: {
+          compilerOptions: {
+            isPreTag: (tag) => tag === 'pre ' || tag === 'q-markdown'
+          }
+        }
+      },
       extendViteConf (viteConf, { isServer, isClient }) {
         viteConf.resolve.extensions = (viteConf.resolve.extensions || ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']).concat(['.md'])
-        console.log(viteConf)
       }
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
