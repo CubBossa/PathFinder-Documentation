@@ -6,7 +6,7 @@
           {{ projects.currentProject?.name }}
           <q-chip dense :label="'v' + projects.currentVersion?.version"/>
         </q-toolbar-title>
-        <q-btn :icon="Dark.isActive ? 'dark_mode' : 'light_mode'" @click="Dark.toggle()" round flat :ripple="false">
+        <q-btn :icon="Dark.isActive ? 'light_mode' : 'dark_mode'" @click="Dark.toggle()" round flat :ripple="false">
           <q-tooltip>Toggle Dark Mode</q-tooltip>
         </q-btn>
         <q-btn :icon="ionLogoGithub" round flat :ripple="false" :href="projects.currentProject?.links.github" target="_blank">
