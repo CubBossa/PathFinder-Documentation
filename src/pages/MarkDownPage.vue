@@ -67,6 +67,7 @@ function loadMarkdown() {
     }
   }
 
+  console.log(projects.currentProject)
   if (projects.currentPage?.markdown !== undefined) {
     import(`../assets/markdown/${projects.currentProject?.key}/${projects.currentVersion?.version}/${projects.currentPage?.markdown}.md`).then(value => {
       markdown.value = value.default
