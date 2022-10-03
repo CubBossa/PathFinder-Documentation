@@ -12,7 +12,6 @@ export default boot(() => {
       const project: Project = {
         key: module.key, name: module.name, versions: [], links: { github: module.links.github, download: module.links.download }
       }
-      console.log(project)
       let promises: Promise<any>[] = []
       module.versions.forEach(v => {
         promises = promises.concat(import('../assets/markdown/' + module.key.toLowerCase() + '/' + v + '/pages.json').then(value => {
