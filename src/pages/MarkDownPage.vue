@@ -69,7 +69,7 @@ function loadMarkdown() {
   }
 
   if (projects.currentPage?.markdown !== undefined) {
-    import('src/assets/markdown/' + projects.currentProject?.key + '/' + projects.currentVersion?.version + '/' + projects.currentPage?.markdown + '.md').then(value => {
+    import('../assets/markdown/' + projects.currentProject?.key + '/' + projects.currentVersion?.version + '/' + projects.currentPage?.markdown + '.md').then(value => {
       markdown.value = value.default
     })
   }
