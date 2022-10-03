@@ -75,6 +75,11 @@ module.exports = configure(function (/* ctx */) {
       // polyfillModulePreload: true,
       // distDir
 
+      transpile: true,
+      transpileDependencies: [
+        /quasar-ui-qmarkdown[\\/]src/
+      ],
+
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
       viteVuePluginOptions: {
