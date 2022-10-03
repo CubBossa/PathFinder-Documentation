@@ -11,7 +11,7 @@ export default boot(() => {
   }
   let promises: Promise<any>[] = []
   markdown.versions.forEach(v => {
-    promises = promises.concat(import('../assets/markdown/' + markdown.key.toLowerCase() + '/' + v + '/pages.json').then(value => {
+    promises = promises.concat(import(`../assets/markdown/${markdown.key.toLowerCase()}/${v}/pages.json`).then(value => {
       project.versions = project.versions.concat({ version: v, pages: value } as Version)
     }))
   })
