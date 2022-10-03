@@ -15,22 +15,22 @@ export default boot(() => {
       console.log(project)
       let promises: Promise<any>[] = []
       module.versions.forEach(v => {
-        promises = promises.concat(import(`../assets/markdown/${module.key.toLowerCase()}/${v}/pages.json`).then(value => {
+        promises = promises.concat(import('../assets/markdown/' + module.key.toLowerCase() + '/' + v + '/pages.json').then(value => {
           project.versions = project.versions.concat({ version: v, pages: value } as Version)
         }))
       })
       Promise.all(promises).then(() => {
-        store.projects = [project]
-        store.currentProject = project
-        if (store.currentProject !== undefined) {
-          store.currentVersion = store.currentProject.versions.at(-1)
-          if (store.currentVersion !== undefined) {
-            store.currentPage = store.currentVersion.pages.pages[0]
-            store.flatPages = store.currentVersion.pages.pages.flatMap((p: Page) => store.convertToFlat(p))
-          }
-        }
+        store.projects = store.projects.concat([project])
       })
     })
+  }
+  store.currentProject = store.projects.at(-1)
+  if (store.currentProject !== undefined) {
+    store.currentVersion = store.currentProject.versions.at(-1)
+    if (store.currentVersion !== undefined) {
+      store.currentPage = store.currentVersion.pages.pages[0]
+      store.flatPages = store.currentVersion.pages.pages.flatMap((p: Page) => store.convertToFlat(p))
+    }
   }
 })
 
