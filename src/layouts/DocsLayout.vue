@@ -65,10 +65,10 @@
 
 <script setup lang="ts">
 import {ionLogoGithub} from '@quasar/extras/ionicons-v6'
-import {useProjects} from "stores/project-store";
-import {ref} from "vue";
-import {useRouter} from "vue-router";
-import {Dark} from "quasar";
+import {useProjects} from 'stores/project-store';
+import {ref} from 'vue';
+import {useRouter} from 'vue-router';
+import {Dark} from 'quasar';
 
 const router = useRouter()
 const projects = useProjects()
