@@ -30,7 +30,6 @@ export const useProjects = defineStore('projects', {
       }
       this.currentPage = match
       if (this.currentProject !== undefined && this.currentVersion !== undefined && this.currentPage !== undefined) {
-        console.log('navigate')
         this.navigateTo(router, this.currentProject.key, this.currentVersion.version, this.currentPage.name)
       }
       return Promise.resolve(this.currentPage)

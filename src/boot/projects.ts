@@ -1,5 +1,5 @@
 import {useProjects} from "stores/project-store";
-import markdown from '../markdown/pathfinder/project.json'
+import markdown from '/public/markdown/pathfinder/project.json'
 import {Page, Project, Version} from "src/models";
 import {boot} from "quasar/wrappers";
 
@@ -7,11 +7,11 @@ export default boot(() => {
   const store = useProjects()
 
   const project: Project = {
-    key: markdown.key, name: markdown.name, versions: []
+    key: markdown.key, name: markdown.name, versions: [], links: { github: markdown.links.github, download: markdown.links.download }
   }
   let promises: Promise<any>[] = []
   markdown.versions.forEach(v => {
-    promises = promises.concat(import('../markdown/' + markdown.key.toLowerCase() + '/' + v + '/pages.json').then(value => {
+    promises = promises.concat(import('/public/markdown/' + markdown.key.toLowerCase() + '/' + v + '/pages.json').then(value => {
       project.versions = project.versions.concat({ version: v, pages: value } as Version)
     }))
   })

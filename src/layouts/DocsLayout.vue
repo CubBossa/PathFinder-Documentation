@@ -6,8 +6,15 @@
           {{ projects.currentProject?.name }}
           <q-chip dense :label="'v' + projects.currentVersion?.version"/>
         </q-toolbar-title>
-        <q-btn :icon="Dark.isActive ? 'dark_mode' : 'light_mode'" @click="Dark.toggle()" round flat :ripple="false"/>
-        <q-btn :icon="ionLogoGithub" round flat :ripple="false"/>
+        <q-btn :icon="Dark.isActive ? 'dark_mode' : 'light_mode'" @click="Dark.toggle()" round flat :ripple="false">
+          <q-tooltip>Toggle Dark Mode</q-tooltip>
+        </q-btn>
+        <q-btn :icon="ionLogoGithub" round flat :ripple="false" :href="projects.currentProject?.links.github" target="_blank">
+          <q-tooltip>Open on GitHub</q-tooltip>
+        </q-btn>
+        <q-btn icon="download" round flat :ripple="false" :href="projects.currentProject?.links.download" target="_blank">
+          <q-tooltip>Download</q-tooltip>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -28,17 +35,6 @@
         </q-input>
       </q-item>
 
-      <q-item>
-        Projects
-      </q-item>
-      <q-list v-for="project in projects.projects" :key="project.name">
-        <q-item>
-          <q-btn unelevated>
-            {{ project.name }}
-          </q-btn>
-        </q-item>
-      </q-list>
-
       <q-separator/>
       <q-item class="text-center text-weight-bold">
         Navigation
@@ -49,7 +45,7 @@
           default-expand-all
           :nodes="projects.currentVersion?.pages.pages"
           node-key="name"
-          selected-color="red"
+          selected-color="accent"
           :selected="selected"
           @update:selected="s => navigate(s)"
         >

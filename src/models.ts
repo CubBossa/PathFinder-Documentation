@@ -2,6 +2,7 @@ export interface Project {
   key: string
   name: string
   versions: Version[]
+  links: { github: string, download: string }
 }
 
 export interface Version {

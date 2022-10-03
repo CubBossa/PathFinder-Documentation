@@ -1,7 +1,7 @@
 <template>
   <q-page
     class="row justify-evenly"
-    :style="'background-color: ' + (Dark.isActive ? 'black' : '#e0e0e0')">
+    style="background-color: #88888844">
     <div class="q-pa-lg row items-start">
       <q-card class="" style="min-width: 800px; max-width: 800px">
         <q-spinner v-if="markdown === undefined" color="primary" size="3em"/>
@@ -14,13 +14,14 @@
           @data="onToc"
         />
       </q-card>
-      <q-card class="q-ml-md" style="min-width: 300px; max-width: 300px">
+      <q-card class="q-ml-md" style="min-width: 150px; max-width: 300px">
         <q-card-section tag="header">
           Table of Content
         </q-card-section>
         <q-separator/>
         <q-card-section>
           <q-tree
+            ref="tree"
             :nodes="toc || []"
             node-key="id"
             label-key="label"
@@ -43,11 +44,13 @@ import {Dark} from "quasar";
 
 const projects = useProjects()
 
+const tree = ref(null)
 const md = ref(null)
 const route = useRoute()
 const markdown: Ref = ref(undefined);
 const toc = ref(undefined)
 const tocFlat = ref(undefined)
+
 function onToc(data: any) {
   tocFlat.value = data
 }
@@ -66,14 +69,16 @@ function loadMarkdown() {
   }
 
   if (projects.currentPage?.markdown !== undefined) {
-    console.log('importing: ' + '../markdown/' + projects.currentProject?.key + '/' + projects.currentVersion?.version + '/' + projects.currentPage?.markdown + '.md')
-    import('../markdown/' + projects.currentProject?.key + '/' + projects.currentVersion?.version + '/' + projects.currentPage?.markdown + '.md').then(value => {
+    import('/public/markdown/' + projects.currentProject?.key + '/' + projects.currentVersion?.version + '/' + projects.currentPage?.markdown + '.md').then(value => {
       markdown.value = value.default
     })
   }
   setTimeout(() => {
-    toc.value = md.value.makeTree(tocFlat.value)
-  }, 20)
+    toc.value = tocFlat.value === undefined || tocFlat.value.length === 0 ? [] : md.value?.makeTree(tocFlat.value)
+    setTimeout(() => {
+      tree.value?.expandAll()
+    }, 10)
+  }, 50)
 }
 
 loadMarkdown()
