@@ -60,25 +60,23 @@ module.exports = configure(function (/* ctx */) {
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
-      publicPath: '/'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '/',
-      // analyze: true,
+      publicPath: '/',
+      analyze: true,
       // env: {},
       // rawDefine: {}
-      // ignorePublicFolder: true,
+      ignorePublicFolder: true,
       // minify: false,
       // polyfillModulePreload: true,
       // distDir
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
-
 
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
