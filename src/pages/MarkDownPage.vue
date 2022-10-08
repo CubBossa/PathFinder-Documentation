@@ -5,6 +5,7 @@
     <div class="q-pa-lg row items-start">
       <q-card class="" style="min-width: 800px; max-width: 800px">
         <q-spinner v-if="markdown === undefined" color="primary" size="3em"/>
+        <q-img src="../assets/markdown/pathfinder/images/path_example.png"/>
         <q-markdown
           ref="md"
           v-if="markdown !== undefined"
