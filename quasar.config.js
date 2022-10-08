@@ -84,7 +84,7 @@ module.exports = configure(function (/* ctx */) {
         }
       },
       extendViteConf (viteConf, { isServer, isClient }) {
-        viteConf.resolve.extensions = (viteConf.resolve.extensions || ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']).concat(['.md'])
+        viteConf.resolve.extensions = ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.md']
       },
       vitePlugins: [
         //[ 'vite-plugin-vue-markdown', { include: [/\.md$/], } ]
