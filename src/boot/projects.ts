@@ -5,7 +5,7 @@ import {boot} from 'quasar/wrappers';
 export default boot(() => {
   const store = useProjects()
 
-  const modules = import.meta.glob('src/assets/markdown/*/project.json')
+  const modules = import.meta.glob('../assets/markdown/*/project.json')
   for (const path in modules) {
     console.log('loading module "' + path + '".')
     modules[path]().then(module => {
@@ -14,7 +14,7 @@ export default boot(() => {
       }
       let promises: Promise<any>[] = []
       module.versions.forEach(v => {
-        promises = promises.concat(import('src/assets/markdown/' + module.key.toLowerCase() + '/' + v + '/pages.json').then(value => {
+        promises = promises.concat(import('../assets/markdown/' + module.key.toLowerCase() + '/' + v + '/pages.json').then(value => {
           project.versions = project.versions.concat({ version: v, pages: value } as Version)
         }))
       })
