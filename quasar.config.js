@@ -10,8 +10,6 @@
 
 
 const { configure } = require('quasar/wrappers');
-const VitePluginMarkdown = require("vite-plugin-md");
-
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -89,7 +87,7 @@ module.exports = configure(function (/* ctx */) {
         viteConf.resolve.extensions = (viteConf.resolve.extensions || ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']).concat(['.md'])
       },
       vitePlugins: [
-        [ 'vite-plugin-vue-markdown', { include: [/\.md$/], } ]
+        //[ 'vite-plugin-vue-markdown', { include: [/\.md$/], } ]
       ]
     },
 
