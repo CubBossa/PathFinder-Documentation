@@ -10,6 +10,7 @@
 
 
 const { configure } = require('quasar/wrappers');
+const VitePluginMarkdown = require("vite-plugin-md");
 
 
 module.exports = configure(function (/* ctx */) {
@@ -86,10 +87,10 @@ module.exports = configure(function (/* ctx */) {
       },
       extendViteConf (viteConf, { isServer, isClient }) {
         viteConf.resolve.extensions = (viteConf.resolve.extensions || ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']).concat(['.md'])
-      }
-      // vitePlugins: [
-      //   [ 'package-name', { ..options.. } ]
-      // ]
+      },
+      vitePlugins: [
+        [ 'vite-plugin-vue-markdown', { include: [/\.md$/], } ]
+      ]
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
