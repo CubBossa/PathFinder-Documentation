@@ -78,6 +78,7 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
       extendViteConf (viteConf, { isServer, isClient }) {
         viteConf.resolve.extensions = ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.md']
+        viteConf.assetsInclude = ['**/markdown/*/images/*.png']
       },
       vitePlugins: [
         //[ 'vite-plugin-vue-markdown', { include: [/\.md$/], } ]
