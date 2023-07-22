@@ -1,37 +1,48 @@
 import {defineStore} from 'pinia';
-import {Page, Project, Version} from 'src/models';
+import {Page} from 'src/models';
 import {Router} from 'vue-router';
 
 export const useProjects = defineStore('projects', {
   state: () => ({
-    projects: [] as Project[],
-    currentProject: undefined as Project | undefined,
-    currentVersion: undefined as Version | undefined,
     currentPage: undefined as Page | undefined,
+    pages: [] as Page[],
     flatPages: [] as Page[]
   }),
   actions: {
-    convertToFlat(page: Page) {
-      return page.children === undefined ? [page] : [page, ...page.children]
+    convertToFlat(page: Page): Page[] {
+      let result: Page[] = [];
+      if (page.children) {
+        result = page.children
+          .map(p =>  {
+            p.parent = () => page
+            return p
+          })
+          .flatMap(this.convertToFlat)
+      }
+      return [page].concat(result)
     },
     getFallBack() {
-      return this.currentPage || {} as Page
+      return this.currentPage || this.pages[0];
     },
-    navigateTo(router: Router, project: string, version: string, page: string) {
-      return router.push('/' + project + '/' + version + '/' + page)
+    pagePath(page: Page): string {
+      let viewed = page;
+      let path = page.route;
+      while (viewed.parent) {
+        viewed = viewed.parent();
+        path = viewed.route + '/' + path;
+      }
+      return '/' + path;
     },
     navigate(router: Router, page: string | null) {
-      if (page === null || this.currentPage?.name === page) {
+      if (page === null || this.currentPage?.route === page) {
         return Promise.resolve(this.getFallBack())
       }
-      const match = this.flatPages.find(value => value.name === page)
-      if (match?.markdown === undefined) {
+      console.log(page)
+      const match = this.flatPages.find(value => this.pagePath(value) === page)
+      if (match?.component === undefined) {
         return
       }
       this.currentPage = match
-      if (this.currentProject !== undefined && this.currentVersion !== undefined && this.currentPage !== undefined) {
-        this.navigateTo(router, this.currentProject.key, this.currentVersion.version, this.currentPage.name)
-      }
       return Promise.resolve(this.currentPage)
     }
   }

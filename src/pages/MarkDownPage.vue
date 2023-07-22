@@ -1,36 +1,18 @@
 <template>
-  <q-page
-    class="row justify-evenly"
-    style="background-color: #88888844">
+  <q-page class="row justify-evenly" style="background-color: var(--c-bg)">
     <div class="q-pa-lg row items-start">
-      <q-card class="" style="min-width: 800px; max-width: 800px">
+      <div class="q-px-xl q-py-md" style="min-width: 900px; max-width: 900px">
         <q-spinner v-if="markdown === undefined" color="primary" size="3em"/>
+        <NodeGroup/>
         <q-markdown
           ref="md"
           v-if="markdown !== undefined"
           :src="markdown"
-          class="q-pa-xl col self-center"
+          class="col self-center"
           toc
           @data="onToc"
         />
-      </q-card>
-      <q-card class="q-ml-md" style="min-width: 150px; max-width: 300px">
-        <q-card-section tag="header">
-          Table of Content
-        </q-card-section>
-        <q-separator/>
-        <q-card-section>
-          <q-tree
-            ref="tree"
-            :nodes="toc || []"
-            node-key="id"
-            label-key="label"
-            children-key="children"
-            default-expand-all
-            no-connectors
-          />
-        </q-card-section>
-      </q-card>
+      </div>
     </div>
   </q-page>
 </template>
@@ -40,6 +22,10 @@
 import {ref, Ref, watch} from 'vue';
 import {useProjects} from 'stores/project-store';
 import {useRoute} from 'vue-router';
+import PermissionBadge from "components/PermissionBadge.vue";
+import CmdLine from "components/CmdLine.vue";
+import CmdArg from "components/CmdArg.vue";
+import NodeGroup from "pages/commands/NodeGroup.vue";
 
 const projects = useProjects()
 

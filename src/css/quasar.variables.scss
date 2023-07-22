@@ -12,12 +12,9 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary   : #4361ee;
-$secondary : #3a0ca3;
-$accent    : #560bad;
-
-$dark      : #1D1D1D;
-$dark-page : #121212;
+$primary   : var(--pf-brand);
+$secondary : var(--pf-brand-accent);
+$accent    : var(--pf-brand-contrast);
 
 $positive  : #21BA45;
 $negative  : #C10015;
