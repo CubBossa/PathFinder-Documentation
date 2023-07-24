@@ -5,6 +5,7 @@ import IntroductionPage from "pages/getting_started/IntroductionPage.vue";
 import NodeGroupCmd from "pages/commands/NodeGroupCmd.vue";
 import PathFinderCmd from "pages/commands/PathFinderCmd.vue";
 import UserGuide from "pages/getting_started/UserGuide.vue";
+import EmptyPage from "pages/EmptyPage.vue";
 
 export function getPage (page: string): Page | undefined {
   const str: string[] = page.split(new RegExp('/|\\'));
@@ -63,13 +64,13 @@ export const pages: Page[] = [
       {
         route: 'installation',
         label: 'Installation',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'configuration',
         label: 'Configuration',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
@@ -86,19 +87,19 @@ export const pages: Page[] = [
       {
         route: 'graphs_nodes',
         label: 'Graphs and Nodes',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'nodegroups',
         label: 'Node Groups',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'visualizers',
         label: 'Path Visualizers',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       }
     ]
@@ -119,7 +120,7 @@ export const pages: Page[] = [
               {
                 route: 'nodes',
                 label: 'nodes',
-                component: () => NodeGroupCmd,
+                component: () => EmptyPage,
                 incomplete: true
               },
               {
@@ -130,7 +131,7 @@ export const pages: Page[] = [
               {
                 route: 'visualizers',
                 label: 'visualizers',
-                component: () => NodeGroupCmd,
+                component: () => EmptyPage,
                 incomplete: true
               }
             ]
@@ -144,17 +145,17 @@ export const pages: Page[] = [
           {
             route: 'find',
             label: '/find',
-            component: () => NodeGroupCmd,
+            component: () => EmptyPage,
             incomplete: true
           },{
             route: 'findlocation',
             label: '/findlocation',
-            component: () => NodeGroupCmd,
+            component: () => EmptyPage,
             incomplete: true
           },{
             route: 'findplayer',
             label: '/findplayer',
-            component: () => NodeGroupCmd,
+            component: () => EmptyPage,
             incomplete: true
           }
         ]
@@ -164,48 +165,48 @@ export const pages: Page[] = [
   {
     route: 'visualizers',
     label: 'Path Visualization',
-    component: () => NodeGroupCmd,
+    component: () => EmptyPage,
     children: [
       {
         route: 'overview',
         label: 'Overview',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'examples',
         label: 'Examples',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'particle',
         label: 'Particle Visualizers',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'combined',
         label: 'Combined Visualizers',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'scriptline',
         label: 'Scripted Visualizers',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'compass',
         label: 'Compass Visualizers',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'placeholder',
         label: 'Placeholder Visualizers',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       }
     ]
@@ -217,13 +218,13 @@ export const pages: Page[] = [
       {
         route: 'api-introduction',
         label: 'Introduction',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       },
       {
         route: 'whats-possible',
         label: 'What can be achieved with the API',
-        component: () => NodeGroupCmd,
+        component: () => EmptyPage,
         incomplete: true
       }
     ]

@@ -1,15 +1,22 @@
 <template>
-  <q-item class="container-box">
-    <q-item-section side>
-      <q-icon :name="data[$props.type].icon"/>
-    </q-item-section>
-    <q-item-section>
+  <div class="container-box">
+    <div class="q-px-md q-pt-sm q-pb-sm row">
+      <div class="q-pr-md row self-center">
+        <q-icon size="140%" :name="data[$props.type].icon"/>
+      </div>
+      <div>
+        {{ toUpperCase(type) }}
+      </div>
+    </div>
+    <div class="q-px-md q-pb-md">
       <slot/>
-    </q-item-section>
-  </q-item>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
+
+import {toUpperCase} from "uri-js/dist/esnext/util";
 
 type InfoType = 'tip' | 'warning' | 'severe' | 'info' | 'success';
 

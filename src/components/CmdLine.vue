@@ -31,7 +31,7 @@ defineProps<{
 }>()
 
 onMounted(() => {
-  copyText.value = cmdline.value.innerText
+  copyText.value = cmdline.value?.innerText || ''
 })
 
 function handleClick(): void {

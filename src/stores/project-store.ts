@@ -9,6 +9,14 @@ export const useProjects = defineStore('projects', {
     flatPages: [] as Page[]
   }),
   actions: {
+    next(page: Page): Page | undefined {
+      const p = this.flatPages.filter(value => value.component != null)
+      return p.at((p.indexOf(page) + 1) % p.length)
+    },
+    previous(page: Page): Page | undefined {
+      const p = this.flatPages.filter(value => value.component != null)
+      return p.at((p.indexOf(page) - 1 + p.length) % p.length)
+    },
     convertToFlat(page: Page): Page[] {
       let result: Page[] = [];
       if (page.children) {

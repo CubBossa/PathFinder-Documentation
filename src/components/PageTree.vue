@@ -8,6 +8,7 @@
           parent: e.page.children,
           incomplete: e.page.incomplete
         }"
+        class="leaf"
         :style="'padding-left: ' + (10 + e.indent * 20) + 'px'"
         @click="$router?.push(pageStore.pagePath(e.page))"
       >
@@ -52,6 +53,9 @@ function flatMap(page: Page, indent: number) {
 </script>
 
 <style lang="sass">
+
+.leaf
+  user-select: none
 
 .selectedleaf
   color: $accent

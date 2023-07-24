@@ -49,7 +49,31 @@
         <q-page class="row justify-evenly" style="background-color: var(--c-bg)">
           <div class="q-pa-lg row items-start">
             <div class="q-px-xl q-py-md" style="min-width: 900px; max-width: 900px">
-              <component :is="projects.currentPage?.component()"/>
+              <component :is="projects.currentPage?.component()" :key="$route?.fullpath"/>
+              <q-separator class="q-mt-xl"/>
+              <div class="row">
+                <q-item clickable dense @click="$router.push(projects.pagePath(projects.previous(projects.currentPage)) || '')">
+                  <q-item-section side>
+                    <q-icon name="chevron_left"/>
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label header>
+                      {{ projects.previous(projects.currentPage).label }}
+                    </q-item-label>
+                  </q-item-section>
+                </q-item>
+                <q-space/>
+                <q-item clickable @click="$router.push(projects.pagePath(projects.next(projects.currentPage)) || '')">
+                  <q-item-section>
+                    <q-item-label header>
+                      {{ projects.next(projects.currentPage).label }}
+                    </q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-icon name="chevron_right"/>
+                  </q-item-section>
+                </q-item>
+              </div>
             </div>
           </div>
         </q-page>
@@ -61,8 +85,8 @@
 <script setup lang="ts">
 import {ionLogoGithub} from '@quasar/extras/ionicons-v6'
 import {useProjects} from 'stores/project-store';
-import {defineAsyncComponent, defineComponent, ref} from 'vue';
-import {useRouter} from 'vue-router';
+import {defineAsyncComponent, defineComponent, ref, watch} from 'vue';
+import {useRoute, useRouter} from 'vue-router';
 import {Dark} from 'quasar';
 import PageTree from "components/PageTree.vue";
 import {pages} from "pages/pages";
@@ -70,13 +94,14 @@ import IntroductionPage from "pages/getting_started/IntroductionPage.vue";
 import Router from "src/router";
 
 const router = useRouter()
+const route = useRoute()
 const projects = useProjects()
 const drawer = ref(true)
 
 Dark.set(true);
 
-useRouter().afterEach((to, from) => {
-  projects.navigate(router, to.path)
+watch(() => route.path, (value, oldValue) => {
+  projects.navigate(router, value)
 })
 
 </script>

@@ -15,9 +15,9 @@
   sufficient for your project, new visualizer types can easily be added via developers API as extension to PathFinder.
   </p>
 
-  <q-img src="../images/path_example.png" alt="Example Path" class="q-my-md"/>
+  <q-img src="../images/path_example.png" alt="Example Path" class="q-my-md rounded-img shadow-10 q-pa-xs"/>
   <p>
-  Example path through a version of hogwarts that we built some time ago.
+  Example path through a version of Hogwarts that we built some time ago.
   </p>
 
   <h2>How does it work?</h2>
