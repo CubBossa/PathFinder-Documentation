@@ -1,9 +1,10 @@
 
 
 import {Page} from 'src/models';
-import {defineAsyncComponent} from "vue";
 import IntroductionPage from "pages/getting_started/IntroductionPage.vue";
-import NodeGroup from "pages/commands/NodeGroup.vue";
+import NodeGroupCmd from "pages/commands/NodeGroupCmd.vue";
+import PathFinderCmd from "pages/commands/PathFinderCmd.vue";
+import UserGuide from "pages/getting_started/UserGuide.vue";
 
 export function getPage (page: string): Page | undefined {
   const str: string[] = page.split(new RegExp('/|\\'));
@@ -62,18 +63,19 @@ export const pages: Page[] = [
       {
         route: 'installation',
         label: 'Installation',
-        component: () => NodeGroup,
+        component: () => NodeGroupCmd,
         incomplete: true
       },
       {
         route: 'configuration',
         label: 'Configuration',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'guide',
         label: 'Starter Guide',
-        component: () => NodeGroup
+        component: () => UserGuide
       }
     ]
   },
@@ -84,17 +86,20 @@ export const pages: Page[] = [
       {
         route: 'graphs_nodes',
         label: 'Graphs and Nodes',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'nodegroups',
         label: 'Node Groups',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'visualizers',
         label: 'Path Visualizers',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       }
     ]
   },
@@ -109,22 +114,24 @@ export const pages: Page[] = [
           {
             route: 'pathfinder',
             label: '/pathfinder',
-            component: () => NodeGroup,
+            component: () => PathFinderCmd,
             children: [
               {
                 route: 'nodes',
                 label: 'nodes',
-                component: () => NodeGroup,
+                component: () => NodeGroupCmd,
+                incomplete: true
               },
               {
                 route: 'nodegroups',
                 label: 'nodegroups',
-                component: () => NodeGroup,
+                component: () => NodeGroupCmd
               },
               {
                 route: 'visualizers',
                 label: 'visualizers',
-                component: () => NodeGroup,
+                component: () => NodeGroupCmd,
+                incomplete: true
               }
             ]
           }
@@ -137,15 +144,18 @@ export const pages: Page[] = [
           {
             route: 'find',
             label: '/find',
-            component: () => NodeGroup,
+            component: () => NodeGroupCmd,
+            incomplete: true
           },{
             route: 'findlocation',
             label: '/findlocation',
-            component: () => NodeGroup,
+            component: () => NodeGroupCmd,
+            incomplete: true
           },{
             route: 'findplayer',
             label: '/findplayer',
-            component: () => NodeGroup,
+            component: () => NodeGroupCmd,
+            incomplete: true
           }
         ]
       }
@@ -154,42 +164,49 @@ export const pages: Page[] = [
   {
     route: 'visualizers',
     label: 'Path Visualization',
-    component: () => NodeGroup,
+    component: () => NodeGroupCmd,
     children: [
       {
         route: 'overview',
         label: 'Overview',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'examples',
         label: 'Examples',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'particle',
         label: 'Particle Visualizers',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'combined',
         label: 'Combined Visualizers',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'scriptline',
         label: 'Scripted Visualizers',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'compass',
         label: 'Compass Visualizers',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'placeholder',
         label: 'Placeholder Visualizers',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       }
     ]
   },
@@ -200,12 +217,14 @@ export const pages: Page[] = [
       {
         route: 'api-introduction',
         label: 'Introduction',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       },
       {
         route: 'whats-possible',
         label: 'What can be achieved with the API',
-        component: () => NodeGroup
+        component: () => NodeGroupCmd,
+        incomplete: true
       }
     ]
   }

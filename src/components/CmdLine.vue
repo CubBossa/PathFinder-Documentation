@@ -1,12 +1,17 @@
 <template>
-  <div ref="cmdline" class="badge gray mc-font" @click="handleClick">
-    <slot />
-  </div>
-  <div class="card-holder" :class="x ? '' : 'card-holder-hidden'">
-    <div class="card">
-      <h4>Roadmap Argument</h4>
-      Supply a roadmap argument by entering the roadmaps namespaced-key.
-      If this sounds confusing, checkout the command to create roadmaps first.
+  <span v-if="inline" class="nolinebreak badge gray mc-font dense">
+    <slot/>
+  </span>
+  <div v-else class="q-py-md">
+    <div ref="cmdline" class="fullwidth badge gray mc-font" @click="handleClick">
+      <slot/>
+    </div>
+    <div class="card-holder" :class="x ? '' : 'card-holder-hidden'">
+      <div class="card">
+        <h4>Roadmap Argument</h4>
+        Supply a roadmap argument by entering the roadmaps namespaced-key.
+        If this sounds confusing, checkout the command to create roadmaps first.
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +26,7 @@ const cmdline = ref(null)
 const slots = useSlots()
 const copyText = ref('')
 defineProps<{
+  inline?: boolean
   permissionNode?: string
 }>()
 
@@ -28,16 +34,30 @@ onMounted(() => {
   copyText.value = cmdline.value.innerText
 })
 
-function handleClick (): void {
+function handleClick(): void {
   navigator.clipboard.writeText(copyText.value)
 }
 
 </script>
 
 <style>
-.badge {
+
+.nolinebreak {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.dense {
+  font-size: 12px !important;
+}
+
+.fullwidth {
   width: 100%;
+}
+
+.badge {
   height: 100%;
+  font-size: 14px;
   padding: 3px 10px;
   background-color: rgba(0, 0, 0, 82%);
   border-radius: 4px;
@@ -49,8 +69,8 @@ function handleClick (): void {
   margin-top: 10px;
   padding: 12px;
   border-radius: 4px;
-  background-color: rgba(0,0,0,.03);
-  border: 1px rgba(0,0,0,.12) solid;
+  background-color: rgba(0, 0, 0, .03);
+  border: 1px rgba(0, 0, 0, .12) solid;
 }
 
 .card h4 {

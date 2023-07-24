@@ -8,13 +8,16 @@
 
 <script setup lang="ts">
 
-import {defineProps, ref} from "vue";
+import {defineProps, ref} from 'vue';
 
 const hovered = ref(false);
 
+type type = 'location' | 'literal' | 'nodes' | 'node-type' | 'example' | 'nodegroup' | 'mod' | 'nskey' | 'str' |
+'int' | 'float'  | 'player' | 'discoverable' | 'mm' | 'vis' | 'vis-type' | 'page' | 'nav' | 'perm' | 'args'
+
 const props = defineProps<{
   label?: string
-  type: string,
+  type: type,
   optional?: boolean
   noWrapper?: boolean
   index: number
@@ -26,6 +29,10 @@ type ArgType = {
 }
 
 const types: { [key: string]: ArgType } = {
+  str: {
+    label: s=> s ? s : 'string',
+    wrapped: true
+  },
   location: {
     label: s => s ? s : '<x> <y> <z>',
     wrapped: false
@@ -34,8 +41,8 @@ const types: { [key: string]: ArgType } = {
     label: s => s ? s : 'literal',
     wrapped: false
   },
-  roadmap: {
-    label: s => s ? s : 'roadmap',
+  args: {
+    label: s => s ? s : 'args',
     wrapped: true
   },
   nodes: {
@@ -86,7 +93,7 @@ const types: { [key: string]: ArgType } = {
     label: s => s ? s : 'visualizer',
     wrapped: true
   },
-  "vis-type": {
+  'vis-type': {
     label: s => s ? s : 'visualizer-type',
     wrapped: true
   },

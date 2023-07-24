@@ -45,7 +45,7 @@
           </q-toolbar-title>
         </q-toolbar>
       </q-item>
-      <q-scroll-area style="height: calc(100vh - 134px)">
+      <q-scroll-area style="height: calc(100vh - 136px)">
         <q-page class="row justify-evenly" style="background-color: var(--c-bg)">
           <div class="q-pa-lg row items-start">
             <div class="q-px-xl q-py-md" style="min-width: 900px; max-width: 900px">
