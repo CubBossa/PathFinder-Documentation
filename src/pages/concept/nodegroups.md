@@ -56,15 +56,15 @@ NodeGroup{
 ## Namespaces and Namespaced Keys
 
 NodeGroups are, like many other objects of the plugin, identified by a unique Namespaced Key. This is a format that minecraft
-uses in many places, like with materials: `minecraft:diamond`.
+uses in many places, like with materials: <CodeElement>minecraft:diamond</CodeElement>.
 
 NodeGroups usually have a key that starts with the namespace 'pathfinder' and finishes with a custom name, given by the
-creator, like `pathfinder:yard`
+creator, like <CodeElement>pathfinder:yard</CodeElement>
 To assure that addons for the pathfinder plugin don't conflict with your existing data, they have to register
 their own data with their own according namespace. So the namespace can be used to identify which addon created a
 group.
 
-So if you ever stumble across PathFinder data, that starts with a different namespace than `pathfinder:`, it most certainly
+So if you ever stumble across PathFinder data, that starts with a different namespace than <CodeElement>pathfinder:</CodeElement>, it most certainly
 comes from an addon for the plugin.
 
 ::: warning

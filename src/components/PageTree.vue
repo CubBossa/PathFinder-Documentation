@@ -56,7 +56,6 @@ function flatMap(page: Page, indent: number) {
 
 .leaf
   user-select: none
-
 .selectedleaf
   color: $accent
 

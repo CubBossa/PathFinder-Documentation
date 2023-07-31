@@ -28,8 +28,8 @@
   </CmdLine>
 
   Creates a new NodeGroup. Use a simple text as name and not a full NamespacedKey
-  (`example`, not `pathfinder:example`). The namespace will be inserted automatically.
-  Command always address the default namespace `pathfinder:`
+  (<CodeElement>example</CodeElement>, not <CodeElement>pathfinder:example</CodeElement>). The namespace will be inserted automatically.
+  Command always address the default namespace <CodeElement>pathfinder:</CodeElement>
 
   <h2>Delete</h2>
   <PermissionBadge :permission="perms.cmd_ng_delete"></PermissionBadge>
@@ -122,9 +122,9 @@
 </template>
 
 <script setup lang="ts">
-import CmdLine from "components/CmdLine.vue";
-import PermissionBadge from "components/PermissionBadge.vue";
-import CmdArg from "components/CmdArg.vue";
+import CmdLine from 'components/CmdLine.vue';
+import PermissionBadge from 'components/PermissionBadge.vue';
+import CmdArg from 'components/CmdArg.vue';
 import perms from '../permission.json';
 
 </script>

@@ -1,11 +1,18 @@
-
-
 import {Page} from 'src/models';
 import IntroductionPage from "pages/getting_started/IntroductionPage.vue";
 import NodeGroupCmd from "pages/commands/NodeGroupCmd.vue";
 import PathFinderCmd from "pages/commands/PathFinderCmd.vue";
 import UserGuide from "pages/getting_started/UserGuide.vue";
 import EmptyPage from "pages/EmptyPage.vue";
+import InstallationPage from "pages/getting_started/InstallationPage.vue";
+import ConfigPage from "pages/getting_started/ConfigPage.vue";
+import FindCmd from "pages/commands/FindCmd.vue";
+import FindLocationCmd from "pages/commands/FindLocationCmd.vue";
+import NodesCmd from "pages/commands/NodesCmd.vue";
+import VisualizerCmd from "pages/commands/VisualizerCmd.vue";
+
+export const DOWNLOAD_LINK = 'https://www.spigotmc.org/resources/gps-pathfinder-minecraft-pathfinding-tool.104961/'
+export const GITHUB_LINK = 'https://github.com/CubBossa/PathFinder'
 
 export function getPage (page: string): Page | undefined {
   const str: string[] = page.split(new RegExp('/|\\'));
@@ -64,8 +71,7 @@ export const pages: Page[] = [
       {
         route: 'installation',
         label: 'Installation',
-        component: () => EmptyPage,
-        incomplete: true
+        component: () => InstallationPage
       },
       {
         route: 'configuration',
@@ -120,8 +126,7 @@ export const pages: Page[] = [
               {
                 route: 'nodes',
                 label: 'nodes',
-                component: () => EmptyPage,
-                incomplete: true
+                component: () => NodesCmd
               },
               {
                 route: 'nodegroups',
@@ -131,8 +136,7 @@ export const pages: Page[] = [
               {
                 route: 'visualizers',
                 label: 'visualizers',
-                component: () => EmptyPage,
-                incomplete: true
+                component: () => VisualizerCmd,
               }
             ]
           }
@@ -145,13 +149,11 @@ export const pages: Page[] = [
           {
             route: 'find',
             label: '/find',
-            component: () => EmptyPage,
-            incomplete: true
+            component: () => FindCmd,
           },{
             route: 'findlocation',
             label: '/findlocation',
-            component: () => EmptyPage,
-            incomplete: true
+            component: () => FindLocationCmd,
           },{
             route: 'findplayer',
             label: '/findplayer',

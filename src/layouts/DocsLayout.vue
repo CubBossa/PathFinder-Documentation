@@ -9,10 +9,10 @@
         <q-btn :icon="Dark.isActive ? 'light_mode' : 'dark_mode'" @click="Dark.toggle()" round flat :ripple="false">
           <q-tooltip>Toggle Dark Mode</q-tooltip>
         </q-btn>
-        <q-btn :icon="ionLogoGithub" round flat :ripple="false" :href="projects.currentProject?.links.github" target="_blank">
+        <q-btn :icon="ionLogoGithub" round flat :ripple="false" :href="GITHUB_LINK" target="_blank">
           <q-tooltip>Open on GitHub</q-tooltip>
         </q-btn>
-        <q-btn icon="download" round flat :ripple="false" :href="projects.currentProject?.links.download" target="_blank">
+        <q-btn icon="download" round flat :ripple="false" :href="DOWNLOAD_LINK" target="_blank">
           <q-tooltip>Download</q-tooltip>
         </q-btn>
       </q-toolbar>
@@ -85,11 +85,11 @@
 <script setup lang="ts">
 import {ionLogoGithub} from '@quasar/extras/ionicons-v6'
 import {useProjects} from 'stores/project-store';
-import {defineAsyncComponent, defineComponent, ref, watch} from 'vue';
+import {defineAsyncComponent, defineComponent, onMounted, ref, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 import {Dark} from 'quasar';
 import PageTree from "components/PageTree.vue";
-import {pages} from "pages/pages";
+import {DOWNLOAD_LINK, GITHUB_LINK, pages} from "pages/pages";
 import IntroductionPage from "pages/getting_started/IntroductionPage.vue";
 import Router from "src/router";
 
@@ -102,6 +102,10 @@ Dark.set(true);
 
 watch(() => route.path, (value, oldValue) => {
   projects.navigate(router, value)
+})
+
+onMounted(() => {
+  projects.navigate(router, useRoute().path)
 })
 
 </script>

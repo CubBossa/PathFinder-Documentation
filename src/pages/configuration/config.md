@@ -2,16 +2,17 @@
 
 ## Language
 
-### Client Language
+<h3>Client Language
 
 ```yml
 language:
   client-language: false
 ```
 
-If this setting is set to true, a players preferred language will be his or her client language.
-The language must exist in the `/lang/` directory by the according country code (en_US, de_DE, ...).
-Otherwise, the fallback language will be used.
+<p>
+If client language is set to true plugin messages will appear in the according client
+language. You need to add according language files if you want to use this feature.
+</p>
 
 ### Fallback Language
 
@@ -23,7 +24,7 @@ language:
 The fallback language serves as default language for all users. If the client language setting
 is enabled but no file for a client language is present the fallback language will be used instead.
 
-The input value is a string that refers to the name of the language file in the `/pathfinder/lang/` directory.
+The input value is a string that refers to the name of the language file in the<CodeElement>/pathfinder/lang/</CodeElement> directory.
 
 
 ## Data Storage
@@ -37,10 +38,10 @@ database:
 
 Describes the way data is supposed to be stored by the plugin.
 The following values are possible:
-- `IN_MEMORY` - No data will be stored persistently. As soon as the server stops or reloads, all data is gone and cannot be restored. This might be preferred for minigames.
-- `YAML` - A flatfile based yaml database. Each roadmap/visualizer/playerdata will be stored as single .yml file.
-- `SQLITE` - An embedded SQLite .db file. Data is stored in a file but accessible via SQL.
-- `REMOTE_SQL` - A remote SQL database system like MySQL or MariaDB.
+-<CodeElement>IN_MEMORY</CodeElement> - No data will be stored persistently. As soon as the server stops or reloads, all data is gone and cannot be restored. This might be preferred for minigames.
+-<CodeElement>YAML</CodeElement> - A flatfile based yaml database. Each roadmap/visualizer/playerdata will be stored as single .yml file.
+-<CodeElement>SQLITE</CodeElement> - An embedded SQLite .db file. Data is stored in a file but accessible via SQL.
+-<CodeElement>REMOTE_SQL</CodeElement> - A remote SQL database system like MySQL or MariaDB.
 
 For further configuration for each type check out the subsections below.
 
@@ -71,7 +72,7 @@ database:
 #### Dialect
 Specify a SQL dialect that fits your database. You may want this to match the SQL implementation
 of your jdbc url.
-Examples: `MYSQL`, `H2`, `POSTGRES`, `MARIADB`
+Examples:<CodeElement>MYSQL</CodeElement>,<CodeElement>H2</CodeElement>,<CodeElement>POSTGRES</CodeElement>,<CodeElement>MARIADB</CodeElement>
 
 #### JDBC-URL
 Specify URL with configuration for your database.
@@ -190,7 +191,7 @@ navigation:
 ```
 
 These settings decide, which node group find distance applies to the node.
-- **LARGEST**: the group with the largest find distance applies 
+- **LARGEST**: the group with the largest find distance applies
 - **SMALLEST**: the group with the smallest find distance applies
 - **NATURAL**: the first group applies. (later groups might be sortable with weights)
 
