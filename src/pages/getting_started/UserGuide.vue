@@ -143,16 +143,20 @@
     You might wonder two things: What is pathfinder:global and what does weight mean.
   </p>
   <p>
-    The global group is just this - a group that contains every node. It is just a simple way to access all nodes at once.
-    The weight defines, which group is considered more important. Lets say, one node has two groups applied: global and target.
+    The global group is just this - a group that contains every node. It is just a simple way to access all nodes at
+    once.
+    The weight defines, which group is considered more important. Lets say, one node has two groups applied: global and
+    target.
     <br>
-    If both groups want to apply a certain behaviour, that can only be applied once, the group with the highest weight wins.
+    If both groups want to apply a certain behaviour, that can only be applied once, the group with the highest weight
+    wins.
   </p>
   <h2>Assigning Nodes to Groups</h2>
   <p>
     To add a waypoint to a group, select the "Assign Group" tool and right-click the according
     waypoint. A menu will open up that contains all nodegroups. Choose your nodegroup.
-    The name of the group will appear above the according node as long as you look in its direction and have either the group
+    The name of the group will appear above the according node as long as you look in its direction and have either the
+    group
     tool or the multi tool in your hand.
   </p>
 
@@ -162,10 +166,12 @@
 
   <p>
     Search terms are, what is used to find certain nodes. If a node has the search term "freecookies", players can use
-    <CmdLine inline>/find freecookies</CmdLine>, to quickly navigate to that node.
+    <CmdLine inline>/find freecookies</CmdLine>
+    , to quickly navigate to that node.
   </p>
   <p>
-    You cannot add search terms to single nodes though, which would be a horrible amount of work. Instead, we apply search
+    You cannot add search terms to single nodes though, which would be a horrible amount of work. Instead, we apply
+    search
     terms to a group and add nodes to this group.
   </p>
   <p>
@@ -208,8 +214,10 @@
 
   <h2>Create a Visualizer</h2>
 
-  To create a visualizer, we first have to choose a type.
-  To keep things simple, we will use a particle visualizer.
+  <p>
+    To create a visualizer, we first have to choose a type.
+    <br>To keep things simple, we will use a particle visualizer.
+  </p>
 
   <CmdLine>
     /visualizer create
@@ -222,43 +230,87 @@
     <CmdArg :index="1" noWrapper type="string" label="hearts"></CmdArg>
   </CmdLine>
 
-  Once we created our first visualizer, lets assign it to our roadmap and check out how it looks.
+  <p>
+    Once we created our first visualizer, lets assign it to our waypoints.
+    <br>Just like earlier, when we were making our group findable, we do this by applying a group modifier.
+    Whenever you run /find, the outcome path will be shown with the visualizers of all groups with the highest weight
+    on each node.<br>Sounds pretty complicated, let me explain with examples:
+  </p>
+
+  <table>
+    <tr>
+      <th>Path</th>
+      <th>Groups</th>
+      <th>Displayed Visualizers</th>
+    </tr>
+    <tr>
+      <td>Waypoint 1</td>
+      <td>Group a (weight 1, visualizer: x)<br>Group b (weight 0, visualizer: y)</td>
+      <td>x</td>
+    </tr>
+    <tr>
+      <td>Waypoint 2</td>
+      <td>Group a (weight 1, visualizer: x)<br>Group c (weight 1, visualizer: z)</td>
+      <td>x, z</td>
+    </tr>
+    <tr>
+      <td>Waypoint 3</td>
+      <td>Group a (weight 1, visualizer: x)<br>Group c (weight 1, visualizer: z)</td>
+      <td>x, z</td>
+
+    </tr>
+  </table>
+
+  <p>
+    So lets simply apply our visualizer to the global group for a start. If you only ever want to have one visualizer,
+    you can keep this setup.
+  </p>
 
   <CmdLine>
-    /roadmap edit
-    <CmdArg :index="0" noWrapper type="roadmap" label="pathfinder:town"></CmdArg>
-    visualizer
+    /pf group
+    <CmdArg :index="0" noWrapper type="nodegroup" label="pathfinder:global"></CmdArg>
+    set visualizer
     <CmdArg :index="1" noWrapper type="vis" label="pathfinder:hearts"></CmdArg>
   </CmdLine>
 
-  We can use the ``/find`` command to start a navigation from our current location to the first node
-  that matches the according search-term.
+  <p>
+    Now lets find out if everything works.
+    We can use the
+    <CmdLine inline>/find</CmdLine>
+    command to start a navigation from our current location to the first node
+    that matches the according search-term.
+  </p>
 
   <CmdLine>
     /find
     <CmdArg :index="0" noWrapper type="string" label="target"></CmdArg>
   </CmdLine>
 
-  Et voilà, our first path appears.
+  <p>
+    Et voilà, our first path appears.
+  </p>
+  <q-img src="../images/tutorial_example_path.png" class="centered-img shadow-10 rounded-img q-mb-lg" width="70%"/>
+  <p>
+    I will quickly build a more complex setup to show that <CmdLine inline>/find</CmdLine> will actually use the shortest path.
+    If you want to try this out by yourself, come to my test server <CodeElement>81.31.199.58:25565</CodeElement> and give it a shot :D
+  </p>
 
-  ![path](../images/guide_05_find.png)
-
-  I will quickly build a more complex setup to show that /find will actually use the shortest path.
-
-  ![shortest path](../images/guide_06_shortest_path.png)
+  <q-img src="../images/example_grand_staircase.png" class="centered-img shadow-10 rounded-img q-mb-lg" width="70%"/>
 
   <h2>Changing particles</h2>
 
-  You can change the settings of a visualizer all to your likings. Have a closer look at the
-  pages of this wiki if you want a detailed list of all properties and how they affect the outcome.
-
-  To end this short guide to get started with the plugin, I will set the particles for our
-  visualizer to actual hearts.
+  <p>
+    You can change the settings of a visualizer all to your likings. Have a closer look at the
+    pages of this wiki if you want a detailed list of all properties and how they affect the outcome.
+  </p>
+  <p>
+    To finally end this guide, I will set the particles for our visualizer to actual hearts.
+  </p>
 
   <CmdLine>
-    /visualizer edit particle
+    /pf visualizer particle
     <CmdArg :index="0" noWrapper type="vis" label="pathfinder:hearts"></CmdArg>
-    particle
+    set particle
     <CmdArg :index="1" noWrapper type="nskey" label="minecraft:hearts"></CmdArg>
   </CmdLine>
 </template>
@@ -267,4 +319,5 @@
 import CmdLine from 'components/CmdLine.vue';
 import CmdArg from 'components/CmdArg.vue';
 import InfoContainer from 'components/InfoContainer.vue';
+import CodeElement from "components/CodeElement.vue";
 </script>

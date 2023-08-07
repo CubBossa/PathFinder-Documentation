@@ -1,21 +1,15 @@
 <template>
   <div class="container">
-    <div v-if="permission" class="mc-font badge row" @click="copyText" @mouseover="hover = true" @mouseout="hover = false">
-      <transition-group
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
-        <div v-show="hover">OP</div>
-        <q-separator v-show="hover" vertical/>
-      </transition-group>
-      <div>{{ permission }}</div>
-    </div>
+    <q-btn flat dense no-caps class="mc-font perm-btn" @click="copyText">
+      {{ permission }}
+    </q-btn>
   </div>
 </template>
 
 <script setup lang="ts">
 
 import {defineProps, ref} from "vue";
+import {Notify} from "quasar";
 
 const hover = ref(false);
 
@@ -25,6 +19,7 @@ const props = defineProps<{
 
 function copyText (): void {
   navigator.clipboard.writeText(props.permission || '')
+  Notify.create('Permission copied.')
 }
 
 </script>
@@ -36,15 +31,13 @@ function copyText (): void {
   justify-content: end;
 }
 
-.badge {
-  transition: background-color .1s;
-  max-width: max-content;
+.perm-btn {
   font-size: 12px;
   color: var(--c-bg);
   background-color: var(--c-text);
   border-radius: 20px;
-  margin: 5px 0;
   padding: 0 10px 2px 10px;
+  margin: 5px 0;
   &:hover {
     background-color: var(--c-text-lighter);
   }

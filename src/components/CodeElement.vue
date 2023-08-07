@@ -12,7 +12,7 @@
 .code-element
   background-color: rgba(0, 0, 0, 0.2)
   border-radius: 3px
-  padding: 4px 2px
+  padding: 2px 2px
   margin: 0 2px
   font-weight: 400
   font-family: 'Source Code Pro',Consolas,Monaco,'Andale Mono',"Ubuntu Mono",monospace

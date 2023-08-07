@@ -10,14 +10,14 @@
     An example would be <CodeElement>@n[id=2]</CodeElement> or <CodeElement>@n[distance=..3]</CodeElement>.
   </p>
 
-  <InfoContainer type="info">
+  <InfoContainer type="tip">
     Minecraft is by now (1.19.3) not capable of handling proper customized arguments.
     Therefore, all waypoint selectors must be in quotes.
     <CodeElement>@n[distance=..3]</CodeElement> must therefore be <CodeElement>"@n[distance=..3]"</CodeElement>
 
     Annoying? Yeah, I think so too :P I made
-    a [feature
-    request](https://feedback.minecraft.net/hc/en-us/community/posts/8241302508941-Custom-Arguments-for-Plugin-Development)
+    a <a href="https://feedback.minecraft.net/hc/en-us/community/posts/8241302508941-Custom-Arguments-for-Plugin-Development">feature
+    request</a>
     and maybe one day
     we will finally have proper command arguments!
   </InfoContainer>
@@ -28,10 +28,10 @@
 
   <table>
     <tr>
-      <td>Condition</td>
-      <td>Values</td>
-      <td>Description</td>
-      <td>Example</td>
+      <th>Condition</th>
+      <th>Values</th>
+      <th>Description</th>
+      <th>Example</th>
     </tr>
     <tr>
       <td>ID</td>

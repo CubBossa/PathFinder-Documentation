@@ -6,6 +6,22 @@ body {
   font-family: var(--font-family);
 }
 
+table {
+  margin: 24px 0;
+  width: 100%;
+  border-radius: 5px;
+  border: solid 1px var(--c-border-dark);
+  border-spacing: 0;
+}
+
+th, td {
+  padding: 8px 4px;
+}
+
+td {
+  border-top: solid 1px var(--c-border-dark);
+}
+
 h1 {
   font-size: 2.2rem;
 }
@@ -215,7 +231,7 @@ h1, h2, h3, h4, h5, h6 {
 
   // custom container colors
   --c-tip: #42b983;
-  --c-tip-bg: var(--c-bg-light);
+  --c-tip-bg: var(--c-bg-dark);
   --c-tip-title: var(--c-text);
   --c-tip-text: var(--c-text);
   --c-tip-text-accent: var(--c-text-accent);
@@ -363,6 +379,9 @@ body.body--dark {
 
   // custom container colors
   --c-tip: #318a62;
+  --c-tip-text: var(--c-text);
+  --c-tip-title: var(--c-text);
+  --c-tip-bg: var(--c-bg-dark);
   --c-warning: #e0ad15;
   --c-warning-bg: #2d2f2d;
   --c-warning-bg-light: #423e2a;

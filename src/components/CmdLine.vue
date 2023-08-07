@@ -1,8 +1,8 @@
 <template>
-  <span v-if="inline" class="nolinebreak badge gray mc-font dense">
+  <span v-if="inline" class="nolinebreak badge gray mc-font dense inline">
     <slot/>
   </span>
-  <div v-else class="q-py-md">
+  <div v-else class="q-pb-md">
     <div ref="cmdline" class="fullwidth badge gray mc-font" @click="handleClick">
       <slot/>
     </div>
@@ -53,6 +53,11 @@ function handleClick(): void {
 
 .fullwidth {
   width: 100%;
+}
+
+.inline {
+  height: fit-content !important;
+  padding: 0 6px !important;
 }
 
 .badge {
