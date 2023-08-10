@@ -67,6 +67,7 @@ defineProps<{
   color: var(--c-warning-title) !important
 
 .container-box
+  border-radius: 8px
   border-style: solid
   border-width: 0 0 0 8px
 

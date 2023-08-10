@@ -22,22 +22,30 @@
 
   <h2>How does it work?</h2>
 
-  To solve problems like the finding of the shortest path across a town map or the navigation of a mob in a video game,
-  some mathematical steps are required. But before lulling you with interesting background information, lets talk about
-  that part that affects the usage of the plugin.
-  Navigation problems are mostly based on a web-like structure like a roadmap, a routing like the internet or the whole
-  earth like in Google Maps.
-  This structure is called a graph. Every intersection of so called edges on this graph is called a node.
+  <p>
+    To solve problems like the finding of the shortest path across a town map or the navigation of a mob in a video game,
+    some mathematical steps are required. But before lulling you with interesting background information, lets talk about
+    that part that affects the usage of the plugin.
+  </p>
+  <p>
+    Navigation problems are mostly based on a web-like structure like a roadmap, a routing like the internet or the whole
+    earth like in Google Maps.
+    <br>
+    This structure is called a graph. Every intersection of so called edges on this graph is called a node.
+  </p>
 
-  ![example graph](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Directed_acyclic_graph.svg/220px-Directed_acyclic_graph.svg.png)
-  *[Source](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Directed_acyclic_graph.svg/220px-Directed_acyclic_graph.svg.png)*
+  <q-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Directed_acyclic_graph.svg/220px-Directed_acyclic_graph.svg.png" width="30%"/>
 
-  To find the shortest path on a graph, several algorithms exist and are automatically computed by the plugin.
-  (You may want to think it through, just taking every possible route and comparing their length will quickly become a
-  tremendous amount of calculations to do)
-  What you as administrator have to do to use this plugin is to create this exact graph in your minecraft world.
-  PathFinder offers some editing tools to easily define nodes, edges, edge weights (steeper or cobbled roads take longer),
-  directions (one way roads), locations (by packing nodes to groups).
+  <p>
+    To find the shortest path on a graph, several algorithms exist and are automatically computed by the plugin.
+    (You may want to think it through, just taking every possible route and comparing their length will quickly become a
+    tremendous amount of calculations to do)
+  </p>
+  <p>
+    What you as administrator have to do to use this plugin is to create this exact graph in your minecraft world.
+    PathFinder offers some editing tools to easily define nodes, edges, edge weights (steeper or cobbled roads take longer),
+    directions (one way roads), locations (by packing nodes to groups).
+  </p>
 
   <h2>Background</h2>
 

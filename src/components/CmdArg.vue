@@ -164,7 +164,7 @@ function getClass() {
 }
 
 .arg {
-  padding: 2.5px;
+  padding: 0 8px;
 }
 
 .selected {

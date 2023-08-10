@@ -3,15 +3,10 @@
     <slot/>
   </span>
   <div v-else class="q-pb-md">
-    <div ref="cmdline" class="fullwidth badge gray mc-font" @click="handleClick">
+    <div ref="cmdline" class="row items-center fullwidth badge gray mc-font" @click="handleClick">
       <slot/>
-    </div>
-    <div class="card-holder" :class="x ? '' : 'card-holder-hidden'">
-      <div class="card">
-        <h4>Roadmap Argument</h4>
-        Supply a roadmap argument by entering the roadmaps namespaced-key.
-        If this sounds confusing, checkout the command to create roadmaps first.
-      </div>
+      <q-space/>
+      <q-icon name="content_copy" color="gray"/>
     </div>
   </div>
 </template>
