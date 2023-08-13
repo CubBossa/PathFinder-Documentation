@@ -250,7 +250,59 @@ NodeGroup{
   </CmdLine>
 
   <h3>Discover Progress Modifier</h3>
+
+  <p>
+    The Discover Progress Modifier is a requirement for the <CmdLine inline>/discoveries</CmdLine> command.
+    <br>
+    The discoveries command lists the amount of discovered discoverables within a group with the discover progress modifier.
+    Pretty hard to explain in an abstract way, so let me explain with an example:
+  </p>
+  <p>
+    Let's say you want to make the magical Harry Potter castle discoverable.
+    <ul>
+      <li>
+        Start by adding the discover progress modifier to the global (or the general hogwarts) group.
+      </li>
+      <li>
+        Make several groups within the hogwarts castle, like for example "great_hall" discoverable.
+      </li>
+      <li>
+        Run <CmdLine inline>/discoveries</CmdLine> and notice, that hogwarts pops up.
+        The percentage is calculated by:
+        <br>
+        <CodeElement>[discovered groups] / [total discoverable groups] * 100</CodeElement>.
+      </li>
+    </ul>
+  </p>
+
+  <q-img src="../images/discoveries_example.png" width="70%" class="centered-img shadow-10 rounded-img q-mb-lg"/>
+
+  <p>
+    Since the group will be listed, a display name is necessary. Hence, run the command with a MiniMessage argument.
+  </p>
+
+  <CmdLine>
+    /pf group
+    <CmdArg :index="0" type="nodegroup"/>
+    set discover-progress
+    <CmdArg :index="1" type="str" no-wrapper label="<u>Hogwarts</u>"/>
+  </CmdLine>
+
+
   <h3>Permission Modifier</h3>
+
+  <p>
+    The Permission Modifier is a simple way to restrict nodes to a certain group of players. This affects all modifiers,
+    so players can neither pass these nodes with /find nor discover any groups that are on these nodes if they don't have
+    the according permission nodes.
+  </p>
+
+  <CmdLine>
+    /pf group
+    <CmdArg :index="0" type="nodegroup"/>
+    set permission
+    <CmdArg :index="1" type="str" no-wrapper label="my.custom.permission.node"/>
+  </CmdLine>
 
 
 </template>

@@ -11,6 +11,7 @@ import FindLocationCmd from "pages/commands/FindLocationCmd.vue";
 import NodesCmd from "pages/commands/NodesCmd.vue";
 import VisualizerCmd from "pages/commands/VisualizerCmd.vue";
 import NodeGroupsPage from "pages/concept/NodeGroupsPage.vue";
+import DiscoveriesCmd from "pages/commands/DiscoveriesCmd.vue";
 
 export const DOWNLOAD_LINK = 'https://www.spigotmc.org/resources/gps-pathfinder-minecraft-pathfinding-tool.104961/'
 export const GITHUB_LINK = 'https://github.com/CubBossa/PathFinder'
@@ -159,6 +160,10 @@ export const pages: Page[] = [
             label: '/findplayer',
             component: () => EmptyPage,
             incomplete: true
+          },{
+            route: 'discoveries',
+            label: '/discoveries',
+            component: () => DiscoveriesCmd,
           }
         ]
       }

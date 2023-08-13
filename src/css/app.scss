@@ -33,11 +33,28 @@ h2 {
   transition: border-color var(--t-color);
 }
 
+a:visited {
+  color: var(--c-brand-contrast);
+}
+
 h3 {
   font-size: 1.35rem;
 }
 
+h3:hover::before, h2:hover::before, h1:hover::before {
+  opacity: 1;
+}
+h3::before, h2::before, h1::before {
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  content: '#';
+  color: var(--c-brand-contrast);
+  margin-left: -.8em;
+  position: absolute;
+}
+
 h1, h2, h3, h4, h5, h6 {
+  transition: all 2s ease-in-out;
   font-weight: 600;
   line-height: 1.25;
   overflow-wrap: break-word;
@@ -205,6 +222,7 @@ h1, h2, h3, h4, h5, h6 {
 :root {
   // brand colors
   --c-brand: var(--pf-brand);
+  --c-brand-contrast: var(--pf-brand-contrast);
   --c-brand-light: var(--pf-brand-light);
 
   // background colors

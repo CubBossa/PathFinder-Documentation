@@ -3,7 +3,7 @@
     <slot/>
   </span>
   <div v-else class="q-pb-md">
-    <div ref="cmdline" class="row items-center fullwidth badge gray mc-font" @click="handleClick">
+    <div ref="cmdline" class="relative-position row items-center fullwidth badge gray mc-font" @click="handleClick" v-ripple>
       <slot/>
       <q-space/>
       <q-icon name="content_copy" color="gray"/>
@@ -13,12 +13,12 @@
 
 <script setup lang="ts">
 
-import {defineProps, onMounted, ref, useSlots} from "vue";
+import {defineProps, onMounted, ref } from "vue";
+import {Notify} from "quasar";
 
 const x = ref(false)
 
 const cmdline = ref(null)
-const slots = useSlots()
 const copyText = ref('')
 defineProps<{
   inline?: boolean
@@ -31,6 +31,7 @@ onMounted(() => {
 
 function handleClick(): void {
   navigator.clipboard.writeText(copyText.value)
+  Notify.create('Command line copied.')
 }
 
 </script>
