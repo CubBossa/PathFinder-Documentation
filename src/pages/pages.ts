@@ -12,6 +12,8 @@ import NodesCmd from "pages/commands/NodesCmd.vue";
 import VisualizerCmd from "pages/commands/VisualizerCmd.vue";
 import NodeGroupsPage from "pages/concept/NodeGroupsPage.vue";
 import DiscoveriesCmd from "pages/commands/DiscoveriesCmd.vue";
+import ExtensionPoints from './api/extensionpoints/ExtensionPoints.vue';
+import EPNodeType from './api/extensionpoints/EPNodeType.vue';
 
 export const DOWNLOAD_LINK = 'https://www.spigotmc.org/resources/gps-pathfinder-minecraft-pathfinding-tool.104961/'
 export const GITHUB_LINK = 'https://github.com/CubBossa/PathFinder'
@@ -233,6 +235,18 @@ export const pages: Page[] = [
         label: 'What can be achieved with the API',
         component: () => EmptyPage,
         incomplete: true
+      },
+      {
+        route: 'extension-points',
+        label: 'Extension Points',
+        component: () => ExtensionPoints,
+        children: [
+          {
+            route: 'node-type',
+            label: 'Node Type',
+            component: () => EPNodeType
+          }
+        ]
       }
     ]
   }
